@@ -7,7 +7,12 @@ import java.util.List;
  *
  */
 public interface VendingMachine {
-	public List<Coin> refund(float number, List<Coin> collectedCoins);
-	public List<Coin> insertedCoins(Coin coin);
-	public List<Coin> withdrawCoins();
+	public List<String> refund(Double number, List<String> collectedCoins);
+	public void reset();
+	public void insertCoin(Coin coin);
+	public Double setItemAndGetPrice(Item item);
+	public void displayItemsWithPriceAndQuantity();
+	public Boolean unsufficientAmountForChange();
+	public Double totalAmountCashInventory();
+	public Double getCurrentBallance();
 }

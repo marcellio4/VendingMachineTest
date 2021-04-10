@@ -43,7 +43,14 @@ public class Inventory<T> {
 	}
 
 	public void put(T item, int quantity) {
+		if (quantity <= 0) {
+			throw new IllegalArgumentException("Quantity must be greater then 0!");
+		}
 		inventory.put(item, quantity);
+	}
+
+	public Map<T, Integer> getInventory(){
+		return inventory;
 	}
 
 }

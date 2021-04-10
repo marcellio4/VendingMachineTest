@@ -1,10 +1,6 @@
 package testing;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,14 +22,14 @@ public class InventoryTest {
 
 	@Test
 	public void testGetQuantity() {
-		Item item = new Item("Pepsi", 0.25);
+		Item item = Item.PEPSI;
 		itemInventory.put(item, 5);
 		assertEquals(5, itemInventory.getQuantity(item));
 	}
 
 	@Test
 	public void testAdd() {
-		Item item = new Item("Pepsi", 0.25);
+		Item item = Item.COKE;
 		itemInventory.put(item, 1);
 		itemInventory.add(item);
 		assertEquals(2, itemInventory.getQuantity(item));
@@ -41,13 +37,13 @@ public class InventoryTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddThrowException() {
-		Item item = new Item("Water", 0.25);
+		Item item = Item.WATER;
 		itemInventory.add(item);
 	}
 
 	@Test
 	public void testDeduct() {
-		Item item = new Item("Pepsi", 0.25);
+		Item item = Item.COKE;
 		itemInventory.put(item, 2);
 		itemInventory.deduct(item);
 		assertEquals(1, itemInventory.getQuantity(item));
@@ -55,20 +51,19 @@ public class InventoryTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testDeductThrowException() {
-		Item item = new Item("Water", 0.25);
+		Item item = Item.WATER;
 		itemInventory.deduct(item);
 	}
 
 	@Test
 	public void testHasItem() {
-		Item item = new Item("Pepsi", 0.25);
-		itemInventory.put(item, 1);
-		assertTrue(itemInventory.hasItem(item));
+		Item item = Item.PEPSI;
+		assertFalse(itemInventory.hasItem(item));
 	}
 
 	@Test
 	public void testClear() {
-		Item item = new Item("Pepsi", 0.25);
+		Item item = Item.WATER;
 		itemInventory.put(item, 1);
 		assertTrue(itemInventory.hasItem(item));
 		itemInventory.clear();
@@ -77,10 +72,15 @@ public class InventoryTest {
 
 	@Test
 	public void testPut() {
-		Item item = new Item("Pepsi", 0.25);
+		Item item = Item.COKE;
 		itemInventory.put(item, 1);
-		assertTrue(itemInventory.hasItem(item));
-		assertFalse(itemInventory.hasItem(new Item("Water", 0.10)));
+		assertTrue(itemInventory.getQuantity(item) == 1);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testPutThrowException() {
+		Item item = Item.COKE;
+		itemInventory.put(item, 0);
 	}
 
 }

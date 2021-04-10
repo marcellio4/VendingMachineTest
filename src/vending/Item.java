@@ -1,17 +1,18 @@
 package vending;
 
 /**
- * Holds data about created items 
+ * Holds data about created items
  * 
- * @param 
  * @author Marcel Zacharias
  *
  */
-public class Item {
+public enum Item {
+	COKE("Coke", 0.25), PEPSI("Pepsi", 0.35), WATER("Water", 0.15);
+
 	private String name;
 	private double price;
-	
-	public Item(String name, double price) {
+
+	private Item(String name, double price) {
 		this.name = name;
 		this.price = price;
 	}
@@ -23,6 +24,4 @@ public class Item {
 	public double getPrice() {
 		return price;
 	}
-	
-
 }

@@ -11,8 +11,8 @@ import vending.VendingMachineImpl;
  */
 public class FactoryVendingMachine {
 
-	public VendingMachine create() {
-		return new VendingMachineImpl();
+	public VendingMachine create(Machine machine) {
+		return new VendingMachineImpl(machine);
 	}
 
 }
