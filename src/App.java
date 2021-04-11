@@ -58,7 +58,7 @@ public class App {
 				if (vendingMachine.getCurrentBallance() < totalCost) {
 					System.out.println("Total inserted coins: "
 							+ Double.valueOf(formatter.format(vendingMachine.getCurrentBallance()))
-							+ " is not sufficient to purchase items!");
+							+ " is not sufficient to purchase your items!");
 					System.out.println();
 					System.out.println("Total Cost -> " + Double.valueOf(formatter.format(totalCost)));
 					while (true) {
