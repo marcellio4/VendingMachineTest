@@ -76,7 +76,7 @@ public class App {
 					}
 				}
 
-				while(true){
+				while (true) {
 					System.out.println();
 					System.out.print("Would you like to buy another drink? Y/N  ->  ");
 					answer = scanner.nextLine().toLowerCase().trim().charAt(0);
@@ -84,7 +84,7 @@ public class App {
 						break;
 					}
 				}
-				
+
 			}
 		} catch (Exception e) {
 			System.out.println();
