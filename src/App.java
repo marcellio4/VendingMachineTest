@@ -49,7 +49,7 @@ public class App {
 					System.out.println(e.getMessage());
 					System.out.println();
 				}
-				
+
 				System.out.println("You have choosen: " + choosenItem + " - price: " + item.getPrice());
 				System.out.println();
 				System.out.println(

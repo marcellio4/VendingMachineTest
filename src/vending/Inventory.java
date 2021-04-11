@@ -49,7 +49,7 @@ public class Inventory<T> {
 		inventory.put(item, quantity);
 	}
 
-	public Map<T, Integer> getInventory(){
+	public Map<T, Integer> getInventory() {
 		return inventory;
 	}
 

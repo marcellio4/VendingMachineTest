@@ -187,7 +187,7 @@ public class VendingMachineImpl implements VendingMachine {
 		return currentBalance;
 	}
 
-	public void setCurrentBalance(Double num){
+	public void setCurrentBalance(Double num) {
 		currentBalance = num;
 	}
 
