@@ -75,7 +75,7 @@ public class App {
 				}
 
 				System.out.println();
-				System.out.println("Would you like to buy another drink? Y/N");
+				System.out.print("Would you like to buy another drink? Y/N  ->  ");
 				answer = scanner.nextLine().toLowerCase().trim().charAt(0);
 				System.out.println();
 			}
