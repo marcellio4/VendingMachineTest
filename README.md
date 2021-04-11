@@ -33,10 +33,10 @@
   1. Start application by compiling `javac App.java` file and execute the file `java App.java`
   2. Inserted Items and Coins are set up automatically by Machine class and by VendingMachineImpl class in initialize method. Initilize method set number
     of coin and Items for Vending Machine
-  3. When program start table of all Items with price and quantities will be printed in terminal
+  3. When program start then table of all Items with price and quantities will be printed in terminal
   4. Write name of the Item that is display to make order
-  5. Insert coin to make purchase. Only certain coins are accepted so, it is necessary type the name of the coin. Accepted Coins are display in terminal
-  6. Question pop out asking if we want another item to buy. Character Y or y is only accepted to take another order otherwise program will continue.
+  5. Insert coin to make purchase. Only certain coins are accepted so, it is necessary type the name of the coin. Accepted Coins are display in terminal. Otherwise program will terminate.
+  6. Question pop out asking if we want another item to buy. Character Y or y is only accepted to take another order otherwise program will be executed to the end and you can not purchase another order.
   7. Total inserted coins and cost is  display with all change.
   
   
