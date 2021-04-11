@@ -14,6 +14,7 @@ public class Machine {
     private List<Coin> cashIn = new ArrayList<>();
     private List<Item> itemsIn = new ArrayList<>();
 
+
     public void setItems() {
         for (Item i : Item.values()) {
             itemsIn.add(i);
