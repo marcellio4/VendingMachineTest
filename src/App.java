@@ -2,7 +2,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import Factory.FactoryVendingMachine;
 import Factory.Machine;
 import vending.Coin;
@@ -27,38 +26,63 @@ public class App {
 		machine.setItems();
 		VendingMachine vendingMachine = factory.create(machine);
 		char answer = 'y';
-		double totalCost = 0.00;
 		Scanner scanner = new Scanner(System.in);
-		while (answer == 'y') {
-			vendingMachine.displayItemsWithPriceAndQuantity();
-			System.out.println();
-			System.out.print("Please type your favourite item: ");
-			String choosenItem = scanner.nextLine().trim();
-			Item item = Item.valueOf(choosenItem.toUpperCase());
-			double itemCost = vendingMachine.setItemAndGetPrice(item);
-			totalCost += itemCost;
-			System.out.println("You have choosen: " + choosenItem + " - price: " + itemCost);
-			System.out.println();
-			System.out.println(
-					"Accepted coins are: onepound, twopound, fiftypence, twentyfivepence, twentypence, tenpence, fivepence, twopence, penny");
-			System.out.println();
-			while (true) {
-				System.out.print("Please type name of the coin from above to purchase your Item: ");
-				String insertedCoin = scanner.nextLine().trim();
-				Coin coin = Coin.valueOf(insertedCoin.toUpperCase());
-				vendingMachine.insertCoin(coin);
-				if (vendingMachine.getCurrentBallance() >= itemCost) {
-					break;
+		Double totalCost = 0.00;
+		try {
+			while (answer == 'y') {
+				vendingMachine.displayItemsWithPriceAndQuantity();
+
+				if (vendingMachine.unsufficientAmountOfItemsOrCash()) {
+					System.out.println("Program will Terminate unsufficient Items or cash in the machine!");
+					scanner.close();
+					return;
 				}
+
+				System.out.println();
+				System.out.print("Please type your favourite item: ");
+				String choosenItem = scanner.nextLine().trim();
+				Item item = Item.valueOf(choosenItem.toUpperCase());
+				try {
+					totalCost += vendingMachine.setItemAndGetPrice(item);
+				} catch (Exception e) {
+					System.out.println();
+					System.out.println(e.getMessage());
+					System.out.println();
+				}
+				
+				System.out.println("You have choosen: " + choosenItem + " - price: " + item.getPrice());
+				System.out.println();
 				System.out.println(
-						"Total inserted coins: " + Double.valueOf(formatter.format(vendingMachine.getCurrentBallance()))
-								+ " is not sufficient to purchase items!");
+						"Accepted coins are: onepound, twopound, fiftypence, twentyfivepence, twentypence, tenpence, fivepence, twopence, penny");
+				System.out.println();
+				if (vendingMachine.getCurrentBallance() < totalCost) {
+					System.out.println("Total inserted coins: "
+							+ Double.valueOf(formatter.format(vendingMachine.getCurrentBallance()))
+							+ " is not sufficient to purchase items!");
+					System.out.println();
+					System.out.println("Total Cost -> " + Double.valueOf(formatter.format(totalCost)));
+					while (true) {
+						System.out.print("Please type name of the coin from above to purchase your Item: ");
+						String insertedCoin = scanner.nextLine().trim();
+						Coin coin = Coin.valueOf(insertedCoin.toUpperCase());
+						vendingMachine.insertCoin(coin);
+						System.out.println("Total inserted amount of coins -> " + vendingMachine.getCurrentBallance());
+						if (vendingMachine.getCurrentBallance() >= item.getPrice()) {
+							break;
+						}
+
+					}
+				}
+
+				System.out.println();
+				System.out.println("Would you like to buy another drink? Y/N");
+				answer = scanner.nextLine().toLowerCase().trim().charAt(0);
 				System.out.println();
 			}
+		} catch (Exception e) {
 			System.out.println();
-			System.out.println("Would you like to buy another drink? Y/N");
-			answer = scanner.nextLine().toLowerCase().trim().charAt(0);
-			System.out.println();
+			System.out.println("Program terminate with message -> " + e.getMessage());
+			return;
 		}
 
 		System.out.println(

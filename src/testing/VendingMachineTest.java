@@ -28,7 +28,6 @@ public class VendingMachineTest {
 
     @Test
     public void testTotalAmountCashInventory() {
-        machine.setCashIn();
         Double total = vm.totalAmountCashInventory();
         assertTrue(24.78 == total);
     }
@@ -67,17 +66,22 @@ public class VendingMachineTest {
 
     @Test
     public void testUnsufficientAmountForChange() {
-        System.out.println(vm.getCurrentBallance());
         assertFalse(vm.unsufficientAmountForChange());
-        vm.reset();
-        vm.getCashInventory().put(Coin.ONEPOUND, 1);
-        vm.insertCoin(Coin.ONEPOUND);
-        vm.setCurrentBalance(3.0);
-        assertTrue(vm.unsufficientAmountForChange());
     }
 
     @Test
     public void testGetCurrentBallance() {
         assertTrue(0.00 == vm.getCurrentBallance());
+    }
+
+    @Test
+    public void testUnsufficientAmountOfItemsOrCash() {
+        vm.getCashInventory().clear();
+        assertTrue(vm.unsufficientAmountOfItemsOrCash());
+        vm.getCashInventory().put(Coin.ONEPOUND, 2);
+        vm.getItemInventory().clear();
+        assertTrue(vm.unsufficientAmountOfItemsOrCash());
+        vm.getItemInventory().put(Item.COKE, 2);
+        assertFalse(vm.unsufficientAmountOfItemsOrCash());
     }
 }

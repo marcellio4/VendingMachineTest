@@ -15,4 +15,5 @@ public interface VendingMachine {
 	public Boolean unsufficientAmountForChange();
 	public Double totalAmountCashInventory();
 	public Double getCurrentBallance();
+	public Boolean unsufficientAmountOfItemsOrCash();
 }

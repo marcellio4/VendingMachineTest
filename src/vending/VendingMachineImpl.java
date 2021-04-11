@@ -106,8 +106,6 @@ public class VendingMachineImpl implements VendingMachine {
 
 	@Override
 	public void reset() {
-		cashInventory.clear();
-		itemInventory.clear();
 		currentBalance = 0;
 		currentItem = null;
 	}
@@ -203,6 +201,14 @@ public class VendingMachineImpl implements VendingMachine {
 
 	public Item getCurrentItem() {
 		return currentItem;
+	}
+
+	/**
+	 * Check if there are any itmes left to sell or any cash coins for change left
+	 */
+	@Override
+	public Boolean unsufficientAmountOfItemsOrCash() {
+		return (itemInventory.getInventory().isEmpty() || cashInventory.getInventory().isEmpty());
 	}
 
 }
