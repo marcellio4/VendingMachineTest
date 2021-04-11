@@ -28,11 +28,11 @@
   * java runtime -> JDK JavaSE-14
   * testing -> Junit 4
   
-## Run Application and desciption ##
+## Run Application and description ##
 
   1. Start application by compiling `javac App.java` file and execute the file `java App.java`
   2. Inserted Items and Coins are set up automatically by Machine class and by VendingMachineImpl class in initialize method. Initilize method set number
-    of coin and Items for Vending Machine
+    of coins and Items for Vending Machine
   3. When program start then table of all Items with price and quantities will be printed in terminal
   4. Write name of the Item that is display to make order
   5. Insert coin to make purchase. Only certain coins are accepted so, it is necessary type the name of the coin. Accepted Coins are display in terminal. Otherwise program will terminate.
