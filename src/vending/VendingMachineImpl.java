@@ -56,42 +56,42 @@ public class VendingMachineImpl implements VendingMachine {
 		DecimalFormat formatter = new DecimalFormat("##.00");
 		number = Double.valueOf(formatter.format(number));
 
-		if (number >= 2.00 && cashInventory.hasItem(Coin.TWOPOUND)) {
+		if (number >= Coin.TWOPOUND.getDenomination() && cashInventory.hasItem(Coin.TWOPOUND)) {
 			cashInventory.deduct(Coin.TWOPOUND);
 			collectedCoins.add("£2");
-			refund((number - 2.00), collectedCoins);
-		} else if (number >= 1.00 && cashInventory.hasItem(Coin.ONEPOUND)) {
+			refund((number - Coin.TWOPOUND.getDenomination()), collectedCoins);
+		} else if (number >= Coin.ONEPOUND.getDenomination() && cashInventory.hasItem(Coin.ONEPOUND)) {
 			cashInventory.deduct(Coin.ONEPOUND);
 			collectedCoins.add("£1");
-			refund((number - 1.00), collectedCoins);
-		} else if (number >= 0.50 && cashInventory.hasItem(Coin.FIFTYPENCE)) {
+			refund((number - Coin.ONEPOUND.getDenomination()), collectedCoins);
+		} else if (number >= Coin.FIFTYPENCE.getDenomination() && cashInventory.hasItem(Coin.FIFTYPENCE)) {
 			cashInventory.deduct(Coin.FIFTYPENCE);
 			collectedCoins.add("50p");
-			refund((number - 0.50), collectedCoins);
-		} else if (number >= 0.25 && cashInventory.hasItem(Coin.TWENTYFIVEPENCE)) {
+			refund((number - Coin.FIFTYPENCE.getDenomination()), collectedCoins);
+		} else if (number >= Coin.TWENTYFIVEPENCE.getDenomination() && cashInventory.hasItem(Coin.TWENTYFIVEPENCE)) {
 			cashInventory.deduct(Coin.TWENTYFIVEPENCE);
 			collectedCoins.add("25p");
-			refund((number - 0.25), collectedCoins);
-		} else if (number >= 0.20 && cashInventory.hasItem(Coin.TWENTYPENCE)) {
+			refund((number - Coin.TWENTYFIVEPENCE.getDenomination()), collectedCoins);
+		} else if (number >= Coin.TWENTYPENCE.getDenomination() && cashInventory.hasItem(Coin.TWENTYPENCE)) {
 			cashInventory.deduct(Coin.TWENTYPENCE);
 			collectedCoins.add("20p");
-			refund((number - 0.20), collectedCoins);
-		} else if (number >= 0.10 && cashInventory.hasItem(Coin.TENPENCE)) {
+			refund((number - Coin.TWENTYPENCE.getDenomination()), collectedCoins);
+		} else if (number >= Coin.TENPENCE.getDenomination() && cashInventory.hasItem(Coin.TENPENCE)) {
 			cashInventory.deduct(Coin.TENPENCE);
 			collectedCoins.add("10p");
-			refund((number - 0.10), collectedCoins);
-		} else if (number >= 0.05 && cashInventory.hasItem(Coin.FIVEPENCE)) {
+			refund((number - Coin.TENPENCE.getDenomination()), collectedCoins);
+		} else if (number >= Coin.FIVEPENCE.getDenomination() && cashInventory.hasItem(Coin.FIVEPENCE)) {
 			cashInventory.deduct(Coin.FIVEPENCE);
 			collectedCoins.add("5p");
-			refund((number - 0.05), collectedCoins);
-		} else if (number >= 0.02 && cashInventory.hasItem(Coin.TWOPENCE)) {
+			refund((number - Coin.FIVEPENCE.getDenomination()), collectedCoins);
+		} else if (number >= Coin.TWOPENCE.getDenomination() && cashInventory.hasItem(Coin.TWOPENCE)) {
 			cashInventory.deduct(Coin.TWOPENCE);
 			collectedCoins.add("2p");
-			refund((number - 0.02), collectedCoins);
-		} else if (number >= 0.01 && cashInventory.hasItem(Coin.PENNY)) {
+			refund((number - Coin.TWOPENCE.getDenomination()), collectedCoins);
+		} else if (number >= Coin.PENNY.getDenomination() && cashInventory.hasItem(Coin.PENNY)) {
 			cashInventory.deduct(Coin.PENNY);
 			collectedCoins.add("1p");
-			refund((number - 0.01), collectedCoins);
+			refund((number - Coin.PENNY.getDenomination()), collectedCoins);
 		}
 		return collectedCoins;
 	}
