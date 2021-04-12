@@ -60,43 +60,35 @@ public class VendingMachineImpl implements VendingMachine {
 			cashInventory.deduct(Coin.TWOPOUND);
 			collectedCoins.add("£2");
 			refund((number - 2.00), collectedCoins);
-		}
-		if ((number >= 1.00 && number < 2.00) && cashInventory.hasItem(Coin.ONEPOUND)) {
+		} else if (number >= 1.00 && cashInventory.hasItem(Coin.ONEPOUND)) {
 			cashInventory.deduct(Coin.ONEPOUND);
 			collectedCoins.add("£1");
 			refund((number - 1.00), collectedCoins);
-		}
-		if ((number >= 0.50 && number < 1.00) && cashInventory.hasItem(Coin.FIFTYPENCE)) {
+		} else if (number >= 0.50 && cashInventory.hasItem(Coin.FIFTYPENCE)) {
 			cashInventory.deduct(Coin.FIFTYPENCE);
 			collectedCoins.add("50p");
 			refund((number - 0.50), collectedCoins);
-		}
-		if ((number >= 0.25 && number < 0.50) && cashInventory.hasItem(Coin.TWENTYFIVEPENCE)) {
+		} else if (number >= 0.25 && cashInventory.hasItem(Coin.TWENTYFIVEPENCE)) {
 			cashInventory.deduct(Coin.TWENTYFIVEPENCE);
 			collectedCoins.add("25p");
 			refund((number - 0.25), collectedCoins);
-		}
-		if ((number >= 0.20 && number < 0.25) && cashInventory.hasItem(Coin.TWENTYPENCE)) {
+		} else if (number >= 0.20 && cashInventory.hasItem(Coin.TWENTYPENCE)) {
 			cashInventory.deduct(Coin.TWENTYPENCE);
 			collectedCoins.add("20p");
 			refund((number - 0.20), collectedCoins);
-		}
-		if ((number >= 0.10 && number < 0.20) && cashInventory.hasItem(Coin.TENPENCE)) {
+		} else if (number >= 0.10 && cashInventory.hasItem(Coin.TENPENCE)) {
 			cashInventory.deduct(Coin.TENPENCE);
 			collectedCoins.add("10p");
 			refund((number - 0.10), collectedCoins);
-		}
-		if ((number >= 0.05 && number < 0.10) && cashInventory.hasItem(Coin.FIVEPENCE)) {
+		} else if (number >= 0.05 && cashInventory.hasItem(Coin.FIVEPENCE)) {
 			cashInventory.deduct(Coin.FIVEPENCE);
 			collectedCoins.add("5p");
 			refund((number - 0.05), collectedCoins);
-		}
-		if ((number >= 0.02 && number < 0.05) && cashInventory.hasItem(Coin.TWOPENCE)) {
+		} else if (number >= 0.02 && cashInventory.hasItem(Coin.TWOPENCE)) {
 			cashInventory.deduct(Coin.TWOPENCE);
 			collectedCoins.add("2p");
 			refund((number - 0.02), collectedCoins);
-		}
-		if ((number >= 0.01 && number < 0.02) && cashInventory.hasItem(Coin.PENNY)) {
+		} else if (number >= 0.01 && cashInventory.hasItem(Coin.PENNY)) {
 			cashInventory.deduct(Coin.PENNY);
 			collectedCoins.add("1p");
 			refund((number - 0.01), collectedCoins);
